@@ -1,0 +1,39 @@
+.login-ground{
+    background-image: url('../files/login1.jpg');
+    background-position:cover;
+    height: 100vh;
+}
+.margin-zero{
+    margin-left: 0;
+    margin-right: 0;
+}
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon a{
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+}
+
+.icon .count {
+    text-align: center;
+    padding: 0 0.9rem 0.3rem 0.9rem;
+    margin-left:5px;
+    border-radius: 3rem;
+}
+.dropdown-menu{
+    position: absolute;
+    left: 45px;
+}
+
+
