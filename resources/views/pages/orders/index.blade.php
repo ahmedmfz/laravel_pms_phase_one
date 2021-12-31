@@ -65,8 +65,8 @@
                                         <td>{{$order->total}}</td>
                                         <td>{{$order->address}}</td>
                                         <td>
-                                            <a href="{{ url('/categories/1/edit')}}" class="btn btn-info"><i class="far fa-edit"></i></a>
-                                            <form action="{{ url('/categories/'.$order->id)}}" method="POST" class="d-inline">
+                                            <a href="{{ url('/orders/1/edit')}}" class="btn btn-info"><i class="far fa-edit"></i></a>
+                                            <form action="{{ url('/orders/'.$order->id)}}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>

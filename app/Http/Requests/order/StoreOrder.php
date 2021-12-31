@@ -24,12 +24,12 @@ class StoreOrder extends FormRequest
     public function rules()
     {
         return [
-           'customer_name'=>'required|string|min:3',
-           'customer_email'=>'required|email|min:3',
-           'user_id'=>'nullable|integer',
+           'customer_name'=>'required|string|min:3|max:255',
+           'customer_email'=>'required|email|max:255',
+           'user_id'=>'nullable|integer|max:1000',
            'phone'=>'required|digits:11',
-           'total'=>'required|integer',
-           'address'=>'required|string',
+           'total'=>'required|integer|max:1000000',
+           'address'=>'required|string|max:255',
         ];
     }
 }
