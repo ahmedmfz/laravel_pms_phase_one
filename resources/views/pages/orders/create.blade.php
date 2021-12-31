@@ -45,7 +45,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Total</label>
-                                            <input type="number" name="total" class="form-control @error('total') is-invalid @enderror" value="{{ $totalPrice }}" placeholder="Enter Total">
+                                            <input type="number" name="total" class="form-control @error('total') is-invalid @enderror" value="{{ $totalPrice }}" placeholder="Enter Total" Readonly>
                                             @error('total')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

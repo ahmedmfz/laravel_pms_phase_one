@@ -111,6 +111,7 @@
 
                   <select id="type" class="form-control @error('type') is-invalid @enderror" name="type" required>
                     <option value="empty" disabled selected> --- </option>
+                    <option value="owner">owner</option>
                     <option value="super_admin">Super_Admin</option>
                     <option value="admin">Admin</option>
                   </select>

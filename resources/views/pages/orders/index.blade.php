@@ -34,7 +34,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <table id="example1" class="table table-bordered table-striped">
-                            
+                        @if($data->count() > 0)
                             <thead>
                                 <tr>
                                     <th>#</th>
@@ -75,6 +75,11 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                            @else
+                                    <tr>
+                                        <td>sorry this is no orders records</td>
+                                    </tr>
+                            @endif
                             </tbody>
                         </table>
                     </div>
