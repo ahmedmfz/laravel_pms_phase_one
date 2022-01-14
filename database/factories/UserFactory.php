@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
@@ -15,12 +16,12 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->first_name(),
-            'last_name' => $this->faker->last_name(),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'type' => $this->faker->type(),
+            'password' => Hash::make('ahmed12345'), // password
+            'type' => $this->faker->randomElement(['super_admin', 'admin']),
             'remember_token' => Str::random(10),
         ];
     }

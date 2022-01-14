@@ -5,6 +5,7 @@ namespace App\Http\Controllers\pages\categorys;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\DataTables\CategoryDataTable;
 use App\Http\Requests\category\StoreCategory;
 use App\Http\Requests\category\UpdateCategory;
 
@@ -12,10 +13,11 @@ use App\Http\Requests\category\UpdateCategory;
 
 class CategoryIndexController extends Controller
 {
-    public function index()
+    public function index(CategoryDataTable $dataTable)
     {
-        $data = Category::with('products')->get();
-        return view('pages.category.index',compact('data'));
+        return $dataTable->render('pages.category.index');
+        
+        // return view('pages.category.index',compact('data'));
     }
 
     

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\pages\orders;
 
 use App\Models\Cart;
 use App\Models\Order;
+use App\Mail\OrderMail;
 use Illuminate\Http\Request;
 use App\Models\Order_Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\order\StoreOrder;
 use Illuminate\Support\Facades\Session;
 
@@ -28,7 +30,7 @@ class OrderController extends Controller
     public function store(StoreOrder $request){
 
        $data = $request->all();
-       $data['user_id'] = Auth::user() ? Auth::user()->id : null ;
+       $data['user_id'] =  Auth::user()->id;
        $data = Order::create($data);
 
        $order_id = $data->id;
@@ -46,7 +48,17 @@ class OrderController extends Controller
        }
       
        session()->forget('cart');
+
+       Mail::to($data->customer_email)->send(new OrderMail($data));
+       
        return redirect('/')->with('success','your order on waiting list');
+    }
+
+    
+    public function destroy($id){
+        $data = Order::findOrFail($id);
+        $data->delete();
+        return back()->with('delete','you deleted order successfuly');
     }
 
     public function getCart(){
@@ -59,9 +71,4 @@ class OrderController extends Controller
         return $cart;
     }
 
-    public function destroy($id){
-        $data = Order::findOrFail($id);
-        $data->delete();
-        return back()->with('delete','you deleted order successfuly');
-    }
 }

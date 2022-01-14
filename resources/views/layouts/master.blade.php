@@ -76,7 +76,7 @@
     <!-- Main Footer -->
     <footer class="main-footer">
       <div class="text-center">
-        <strong>Copyright &copy; 2021 <a href="#">EraaSoft</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2021 <a href="#">Ahmed Mahfouz</a>.</strong> All rights reserved.
       </div>
     </footer>
   </div>
@@ -88,14 +88,9 @@
   <script src="{{ asset('assets/jquery/jquery.min.js')}}"></script>
   <!-- Bootstrap 4 -->
   <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
-  <!-- jquery-validation -->
-  <script src="{{ asset('assets/jquery-validation/jquery.validate.min.js')}}"></script>
-  <script src="{{ asset('assets/jquery-validation/additional-methods.min.js')}}"></script>
-  <!-- DataTables -->
-  <script src="{{ asset('assets/datatables/jquery.dataTables.min.js')}}"></script>
-  <script src="{{ asset('assets/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
-  <script src="{{ asset('assets/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
-  <script src="{{ asset('assets/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+  
+  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('assets/dist/js/adminlte.min.js')}}"></script>
 

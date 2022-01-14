@@ -17,7 +17,7 @@ class SuperAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Auth::user()->type == 'super_admin'){
+        if(Auth::user()->type == 'admin'){
             return redirect('/');
         }
         return $next($request);

@@ -19,8 +19,8 @@
                                         <th scope="col">item name</th>
                                         <th scope="col">price</th>
                                         <th scope="col">total</th>
-                                        <th scope="col">action</th>
                                         <th scope="col">quantity</th>
+                                        <th scope="col">action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -30,7 +30,7 @@
                                             <th>{{ $product['item']['name']}}</th>
                                             <td>{{ $product['item']['price']}}</td>
                                             <td>{{ $product['price'] }}</td>
-
+                                            <td><span class="badge bg-success">{{ $product['qty']}}</span></td>
                                             <td>
                                                 <form action="{{ url('/cart/'.$product['item']['id'] )}}" method="post">
                                                     @csrf
@@ -39,7 +39,7 @@
                                                 </form>
                                                
                                             </td>
-                                            <td><span class="badge bg-success">{{ $product['qty']}}</span></td>
+                                            
                                         </tr>
                                     @endforeach
                                 @else
@@ -83,7 +83,7 @@
 
 
                 <div class="text-center">
-                    <a href="{{ url('/cart/destroy')}}" class="btn btn-danger">Clear</a>
+                    <a href="{{ url('/cart/destroy')}}" class="btn btn-danger">cancel order</a>
                     <a href="{{ url('/orders/create')}}" class="btn btn-warning">CheckOut</a>
                 </div>
             </div>

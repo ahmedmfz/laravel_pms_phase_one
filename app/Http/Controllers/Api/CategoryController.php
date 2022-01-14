@@ -4,43 +4,27 @@ namespace App\Http\Controllers\Api;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Traits\responseTrait;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\Category\CatgoryResource;
 
 class CategoryController extends Controller
 {
    use responseTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
+
     public function index()
     {
-        return 'jdagjfskxfjdz';
+        $category = CatgoryResource::collection(Category::all()) ;
+        return $this->data($category,"data send successfully",200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return 'jdagjfskxfjdz';
-    }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validation = Validator::make($request->all(),[ 
-            'name' => 'required|min:3',
+            'name' => 'required|string|min:3',
         ]);
     
         if($validation->fails()){
@@ -50,53 +34,59 @@ class CategoryController extends Controller
         } else{
             $data = $request->all();
             $data = Category::create($data);
+            $data = new CatgoryResource($data);
 
             return $this->data($data,"data added successfully",200);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
-        //
+        $category = Category::find($id) ;
+
+        if($category):
+             return $this->data(new CatgoryResource($category),"data send successfully",200);
+        endif;
+        return $this->data(null,"no category found",404);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function update(Request $request, $id)
     {
-        //
+        $validation = Validator::make($request->all(),[ 
+            'name' => 'required|min:3',
+        ]);
+
+        $data = $request->all();
+        $update_data = Category::find($id);
+
+        if($update_data){
+
+            if($validation->fails()){
+                return $this->data(null,$validation->errors(),422);
+            }
+
+            $update_data->update($data);
+            $data = new CatgoryResource($data);
+            
+            return $this->data($data,"data updated successfully",200);
+        }
+
+        return $this->data(null,"no category found",404);
+    
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        $delete_data = Category::where('id',$id)->first();
+
+        if($delete_data){
+            $delete_data->delete();
+            return $this->data(null,"data deleted successfully",200);
+        }
+        return $this->data(null,"no category found",404);
     }
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\pages\orders\OrderController;
 use App\Http\Controllers\pages\users\UserProfileController;
 use App\Http\Controllers\pages\products\ProductIndexController;
 use App\Http\Controllers\pages\categorys\CategoryIndexController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,9 @@ Route::middleware('auth')->group(function(){
     Route::resource('/users', UserProfileController::class)->middleware('super_admin');
 
     Route::resource('/orders', OrderController::class);
+
+  
+
 });
 
 

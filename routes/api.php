@@ -20,5 +20,5 @@ use App\Http\Controllers\Api\CategoryController;
 //     return $request->user();
 // });
 
-Route::get('test-api', [TestController::class,'index']);
+
 Route::apiResource('category', CategoryController::class);
